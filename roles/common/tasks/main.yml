@@ -1,0 +1,23 @@
+---
+# tasks file for common
+- name: Install php and common next
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - libapache2-mod-php
+    - php
+    - php-curl
+    - php-gd
+    - php-json
+    - php-mbstring
+    - php-mysql
+    - php-xml
+- name: Enable apache required module
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - expires
+    - headers
+    - rewrite
+    - ssl

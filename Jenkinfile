@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'ansible-playbook common.yml -u root'
+
+            }
+        }
+    }
+}
